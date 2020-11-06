@@ -50,17 +50,18 @@ function App1() {
       <div className="searchBar">
       <h1>Flight Search</h1>
       <form className="dropdown" onSubmit={searchFlights}>
-        <label className="label" htmlFor="departure">Departure</label>
-          <select className="form-control form-control-sm w-25" name="departure" onChange={selectDeparture}>
+        <label className="label" htmlFor="departure"></label>
+          <select className="form-control form-control-sm w-100" name="departure" onChange={selectDeparture}>
             <option>Choose your departure</option>
             <option value="PRG">Prague</option>
             <option value="TXL">Berlin</option>
             <option value="WAW">Warsaw</option>
             <option value="PED">Pardubice</option>
+            
           </select>
-
-        <label>Destination</label>
-        <select className="form-control form-control-sm w-25" name="destination" onChange={selectDestination}>
+          <br/><br/>
+        
+        <select className="form-control form-control-sm w-100" name="destination" onChange={selectDestination}>
         <option>Choose your destination</option>
             <option value="VLC">Valencia</option>
             <option value="BCN">Barcelona</option>
@@ -68,13 +69,17 @@ function App1() {
             <option value="MXP">Milano</option>
             <option value="AIA">Athens</option>
         </select>
+        <br/><br/>
             
           <button className="button">search</button>
+
       </form>
+
       </div>
+
     
       <div className="flight-list">
-      <h3 className="card-title">Flight Details:</h3>
+      {/* <h3 className="card-title">Flight Details:</h3> */}
       <div >{departure} to {destination}
       {flights.map (
         

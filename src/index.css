@@ -11,6 +11,9 @@ body {
   padding: 0;
   background-color: rbg(244,244,244);
   color: #333;
+  background-image: url('https://image.freepik.com/free-photo/sunset-sky-from-airplane-window_117856-416.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 p {
@@ -26,13 +29,17 @@ small {
   padding: 40px;
 }
 .searchBar {
-  height: 40vh;
-  background: url('https://image.freepik.com/free-photo/sunset-sky-from-airplane-window_117856-416.jpg')
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20%;
+
 }
 .label {
   font-size: 1.2rem;
   text-transform: uppercase;
   margin-bottom: 0.2rem;
+  
 }
 .input {
   font-size: 1.6rem;
@@ -59,7 +66,10 @@ small {
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
   margin-bottom: 2rem;
-  background-color: white;
+  display: flex;
+  justify-content: center;
+
+
 }
 .flight--card {
   padding: 2rem 4rem;
@@ -67,6 +77,8 @@ small {
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
   margin-bottom: 2rem;
   width: 300px;
+  background-color: white;
+  opacity: 0.5;
   
 }
 .flight--card:hover {
