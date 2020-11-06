@@ -54,22 +54,24 @@ small {
 .button:hover {
   background-color: rgba(0,0,0,0.85)
 }
-.flight {
-
-}
-.flight-cards {
+.flight-list {
   padding: 2rem 4rem;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
   margin-bottom: 2rem;
   background-color: white;
 }
-.flight--list {
+.flight--card {
   padding: 2rem 4rem;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
   margin-bottom: 2rem;
-  background-color: white;
+  width: 300px;
+  
+}
+.flight--card:hover {
+  box-shadow: 1px 1px 5px rgba(27, 16, 16, 0.5);
+  
 }
 li {
   list-style: none;
