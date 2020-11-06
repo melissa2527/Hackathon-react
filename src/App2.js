@@ -4,7 +4,7 @@ import './App.css';
 
 function App2() {
 
-  // const [ flight, setFlight ] = useState([])
+  const [ flights, setFlights ] = useState([])
   const [ departure, setDeparture ] = useState('')
   const [ destination, setDestination ] = useState('')
 
@@ -14,23 +14,23 @@ function App2() {
   // const url = 'https://api.skypicker.com/flights?flyFrom=PRG&to=LGW&dateFrom=18/11/2020&dateTo=12/12/2020&partner=picky&v=3'
 
   const searchFlights = async (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     const url = `https://api.skypicker.com/flights?flyFrom=${departure}&to=${destination}&dateFrom=12/01/2021&dateTo=12/12/2021&partner=picky&v=3`
     try {
       const response = await fetch(url)
       const data = await response.json()
-      // setFlight(data)
-      console.log(data)
+      setFlights(data.data)
+      
     }catch(err) {
       console.log(err)
     }
   }
 
-  useEffect(() => {
-    searchFlights();
-    console.log(departure)
-    console.log(destination)
-  },[departure, destination])
+  // useEffect(() => {
+  //   searchFlights();
+  //   console.log(departure)
+  //   console.log(destination)
+  // },[departure, destination])
 
   const selectDeparture = (e) => {
     setDeparture(
@@ -47,9 +47,9 @@ function App2() {
   return (
     <div className="App">
       Hanka
-      <form className="form" onSubmit={searchFlights}>
+      <form className="form">
         <label className="label" htmlFor="departure">Departure</label>
-          <select name="departure" onClick={selectDeparture}>
+          <select name="departure" onChange={selectDeparture}>
             <option value="PRG">Prague</option>
             <option value="TXL">Berlin</option>
             <option value="WAW">Warsaw</option>
@@ -57,15 +57,15 @@ function App2() {
           </select>
 
         <label>Destination</label>
-        <select name="destination" onClick={selectDestination}>
-            <option value="VLC">Valencia</option>
-            <option value="BCN">Barcelona</option>
-            <option value="MAD">Madrid</option>
-            <option value="MXP">Milano</option>
-            <option value="AIA">Athens</option>
+        <select name="destination" onChange={selectDestination}>
+            <option  value="VLC">Valencia</option>
+            <option  value="BCN">Barcelona</option>
+            <option  value="MAD">Madrid</option>
+            <option  value="MXP">Milano</option>
+            <option  value="AIA">Athens</option>
         </select>
             
-          <button className="button">search</button>
+          <button className="button" onClick={searchFlights}>search</button>
       </form>
 
       <div className="flight">
@@ -73,6 +73,7 @@ function App2() {
           <p>Departure: {departure}</p>
           <p>Destination: {destination}</p>
       </div>
+      {console.log(flights)}
     </div>
   );
 }
