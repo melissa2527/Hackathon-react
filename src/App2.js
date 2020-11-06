@@ -69,34 +69,33 @@ function App2() {
           <button className="button">search</button>
       </form>
 
-      <div className="flight">
-          <h3>Flight Details:</h3>
+      <div className="flight-list">
+          {/* <h3>Flight Details:</h3> */}
           <div className="flight-card">{departure} to {destination}
           
           {flights.length == 0 ? (
             <h2>No available flights</h2>
           
-            ) : (
-              flights.map (
-              
-                (flight, i) => 
+          ) : (
+                flights.map (
                 
-                <ul>
-                  <li>Option {i+1}</li>
-    
-                  <li>Departure: {DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</li>
+                  (flight, i) => 
                   
-                  <li>Arrival: {DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</li>
-    
-                  <li>Duration: {flight.fly_duration} </li>
-    
-                  <li>Price: {flight.price} EUR</li>
-                </ul>
-                
-                )
+                  <ul>
+                    <li>Option {i+1}</li>
+      
+                    <li>Departure: {DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</li>
+                    
+                    <li>Arrival: {DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</li>
+      
+                    <li>Duration: {flight.fly_duration} </li>
+      
+                    <li>Price: {flight.price} EUR</li>
+                  </ul>
+                  
+                  )
             )
           }
-          
           
           </div>
 

@@ -6,7 +6,7 @@ import './App.css';
 function App1() {
 
 
-  const [ flights, setFlights ] = useState([])
+  const [ flights, setFlights ] = useState(null)
   const [ departure, setDeparture ] = useState('')
   const [ destination, setDestination ] = useState('')
 
@@ -80,27 +80,41 @@ function App1() {
     
       <div className="flight-list">
       {/* <h3 className="card-title">Flight Details:</h3> */}
-      <div >{departure} to {destination}
-      {flights.map (
-        
-        (flight, i) => 
-        <ul className="flight--card">
-          <li>Option {i+1}</li>
+      <div>
 
-          <li>Departure: {DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</li>
+       <h2> {departure.length ? (departure + ' to') : '' } {destination}</h2>
+      
+      { flights && (
+
+        !!flights.length ? (
+        
+          flights.map (
           
-          <li>Arrival: {DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</li>
+          (flight, i) => 
+            <ul className="flight--card">
+            <li>Option {i+1}</li>
+            <hr />
 
-          <li>Duration: {flight.fly_duration} </li>
-        </ul>
+            <li>Departure: <strong>{DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</strong></li>
+            
+            <li>Arrival: <strong>{DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</strong></li>
+
+            <li>Duration: <strong>{flight.fly_duration}</strong> </li>
+          </ul>
+          
+          )) : (
+            
+            <h2>No flights available</h2>
+
+          )
         
-        )
-      }
+          )
+        }
+
       </div>
   
-      
 
-  </div>
+    </div>
       
     </div>
   );
