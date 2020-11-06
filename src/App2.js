@@ -17,7 +17,7 @@ function App2() {
     try {
       const response = await fetch(url)
       const data = await response.json()
-      const firstData = data.data.slice(0, 5)
+      const firstData = data.data.slice(0, 6)
       console.log(firstData)
       setFlights(firstData)
     }catch(err) {
@@ -72,21 +72,32 @@ function App2() {
       <div className="flight">
           <h3>Flight Details:</h3>
           <div className="flight-card">{departure} to {destination}
-          {flights.map (
-            
-            (flight, i) => 
-            <ul>
-              <li>Option {i+1}</li>
-
-              <li>Departure: {DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</li>
+          
+          {flights.length == 0 ? (
+            <h2>No available flights</h2>
+          
+            ) : (
+              flights.map (
               
-              <li>Arrival: {DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</li>
-
-              <li>Duration: {flight.fly_duration} </li>
-            </ul>
-            
+                (flight, i) => 
+                
+                <ul>
+                  <li>Option {i+1}</li>
+    
+                  <li>Departure: {DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</li>
+                  
+                  <li>Arrival: {DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</li>
+    
+                  <li>Duration: {flight.fly_duration} </li>
+    
+                  <li>Price: {flight.price} EUR</li>
+                </ul>
+                
+                )
             )
           }
+          
+          
           </div>
 
           
