@@ -71,9 +71,24 @@ function App2() {
 
       <div className="flight">
           <h3>Flight Details:</h3>
-          <p>Departure: {departure} - {flights.map(flight => DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm'))}</p>
-          <p>Destination: {destination} - {flights.map(flight => DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm'))}</p>
-          <p>Duration: {flights.map(flight => flight.fly_duration)}</p>
+          <div className="flight-card">{departure} to {destination}
+          {flights.map (
+            
+            (flight, i) => 
+            <ul>
+              <li>Option {i+1}</li>
+
+              <li>Departure: {DateTime.fromMillis(flight.dTime * 1000).toFormat('hh:mm')}</li>
+              
+              <li>Arrival: {DateTime.fromMillis(flight.aTime * 1000).toFormat('hh:mm')}</li>
+
+              <li>Duration: {flight.fly_duration} </li>
+            </ul>
+            
+            )
+          }
+          </div>
+
           
   
       </div>
